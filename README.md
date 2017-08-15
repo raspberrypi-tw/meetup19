@@ -2,7 +2,7 @@
 
 ## Intro
 In this meetup, we will introudce the FLIR camera and microscope camera on Pi. Demo code can be found below.
-The slide is available on [Raspberry Pi特色相機介紹(熱成像攝影機+微距相機)][https://www.slideshare.net/raspberrypi-tw/raspberry-pi-78846465]
+The slide is available on [Raspberry Pi特色相機介紹(熱成像攝影機+微距相機)](https://www.slideshare.net/raspberrypi-tw/raspberry-pi-78846465)
 
 Our environment is Pi 3 + 2017-07-05-raspbian-jessie.img.
 
@@ -25,13 +25,7 @@ $ make
 $ sudo insmod ./v4l2loopback.ko
 ```
 
-### Install Python-tesseract
-```shell  
-$ pip install pytesseract
-```
-
-
-## Enable FLIR Camera V4L2
+### Enable FLIR Camera V4L2
 ```shell  
 $ git clone https://github.com/groupgets/LeptonModule
 $ sudo ./v4l2lepton /dev/video0 &
@@ -63,15 +57,22 @@ $ python blend.py
 
 
 ## USB Microscope
-Use [pytesseract][https://pypi.python.org/pypi/pytesseract] to do OCR.
+
+## Required
+### Install Python-tesseract
+```shell  
+$ pip install pytesseract
+```
+
+### Use [pytesseract](https://pypi.python.org/pypi/pytesseract) to do OCR.
 ```shell  
 $ cd micro
 $ python ocr_preview.py 0
 ```
 
-** Note:
-1. the `0` of `python ocr_preview.py 0` means the 0th video device node, such as /dev/video0.
+Note:
+1. the `0` of `python ocr_preview.py 0` means the 0th video device node, such as `/dev/video0`.
 2. When launch the program, press `t` to start Tesseract-OCR for the fixed area.
 3. After finish Tesseract-OCR, the result will be shown on the preview window.
-4. Press `q` to exit the program.**
+4. Press `q` to exit the program.
 

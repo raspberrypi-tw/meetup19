@@ -9,7 +9,8 @@
 #
 # Author : sosorry
 # Date   : 2017/07/31
-# Usage  : python ocr_preview.py
+# Usage  : python ocr_preview.py CAMERA_ID
+# Example: python ocr_preview.py 0
 
 import cv2
 import numpy as np
