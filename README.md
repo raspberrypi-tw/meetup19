@@ -27,7 +27,9 @@ $ sudo insmod ./v4l2loopback.ko
 
 ### Enable FLIR Camera V4L2
 ```shell  
+$ cd ~
 $ git clone https://github.com/groupgets/LeptonModule
+$ cd ~/LeptonModule/software/v4l2lepton
 $ sudo ./v4l2lepton /dev/video0 &
 Waiting for sink
 done reading, resets: 
