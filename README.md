@@ -21,8 +21,9 @@ $ rpi-source
 $ cd ~
 $ git clone https://github.com/umlaeute/v4l2loopback
 $ cd ~/v4l2loopback
-$ make
-$ sudo insmod ./v4l2loopback.ko
+$ make && sudo make install
+$ sudo depmod -a
+$ sudo modprobe v4l2loopback
 ```
 
 ### Enable FLIR Camera V4L2
