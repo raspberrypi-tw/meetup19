@@ -21,7 +21,8 @@ $ rpi-source
 $ cd ~
 $ git clone https://github.com/umlaeute/v4l2loopback
 $ cd ~/v4l2loopback
-$ make && sudo make install
+$ sudo make
+$ sudo make install
 $ sudo depmod -a
 $ sudo modprobe v4l2loopback
 ```
@@ -31,6 +32,7 @@ $ sudo modprobe v4l2loopback
 $ cd ~
 $ git clone https://github.com/groupgets/LeptonModule
 $ cd ~/LeptonModule/software/v4l2lepton
+$ sed -i -e 's/video1/video0/g' v4l2lepton.cpp
 $ make
 $ sudo ./v4l2lepton /dev/video0 &
 Waiting for sink
@@ -42,7 +44,7 @@ done reading, resets:
 $ cd flir
 
 # FLIR image preview
-$ python canny1.py
+$ python flir_preview.py
 
 # FLIR image to Gray scale image preview
 $ python canny2.py
