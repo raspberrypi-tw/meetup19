@@ -1,5 +1,4 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
+#!/usr/bin/python3
 #+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 #|R|a|s|p|b|e|r|r|y|P|i|.|c|o|m|.|t|w|
 #+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -12,11 +11,11 @@
 # Usage  : python canny3.py
 
 import cv2
+import time
+import imutils
 
 cv2.namedWindow('canny', cv2.WINDOW_NORMAL)
-vc = cv2.VideoCapture(0)
-vc.set(cv2.cv.CV_CAP_PROP_FRAME_WIDTH,  320)
-vc.set(cv2.cv.CV_CAP_PROP_FRAME_HEIGHT, 240)
+vc = cv2.VideoCapture(1)
 
 if vc.isOpened(): # try to get the first frame
     rval, frame = vc.read()
@@ -25,6 +24,7 @@ else:
 
 while rval:
     rval, frame = vc.read()
+    frame = imutils.resize(frame, 320)
     frame_hsv = cv2.cvtColor(frame, cv2.COLOR_RGB2HSV)
     frame_v = frame_hsv[:,:,2]
     thresh = 50
@@ -34,3 +34,8 @@ while rval:
 
     if cv2.waitKey(1) & 0xFF == ord("q"):
         break
+
+    time.sleep(0.01)
+
+vc.release()
+cv2.destroyAllWindows()

@@ -4,16 +4,19 @@
 In this meetup, we will introudce the FLIR camera and microscope camera on Pi. Demo code can be found below.
 The slide is available on [Raspberry Pi特色相機介紹(熱成像攝影機+微距相機)](https://www.slideshare.net/raspberrypi-tw/raspberry-pi-78846465)
 
-Our environment is Pi 3 + 2017-07-05-raspbian-jessie.img.
+Our environment is Pi 4 + 2020-02-05-raspbian-buster-full.img.
 
 ## Required
 ### Build v4l2loopback virtual device node.
 ```shell  
 # Install Kernel Source and Header
 $ sudo apt-get update
-$ sudo apt-get install bc libncurses5-dev
+$ sudo apt-get install bc libncurses5-dev flex bison
 $ sudo wget https://raw.githubusercontent.com/notro/rpi-source/master/rpi-source -O /usr/bin/rpi-source && sudo chmod +x /usr/bin/rpi-source && /usr/bin/rpi-source -q --tag-update
 $ rpi-source
+
+# Install required module
+$ sudo pip3 install imutils
 ```
 
 ### Install V4L2 Kernel Module
@@ -44,21 +47,21 @@ done reading, resets:
 $ cd flir
 
 # FLIR image preview
-$ python flir_preview.py
+$ python3 flir_preview.py
 
 # FLIR image to Gray scale image preview
-$ python canny2.py
+$ python3 canny2.py
 
 # Canny edge detection WITHOUT blur
-$ python canny3.py
+$ python3 canny3.py
 
 # Canny edge detection with blur
-$ python canny4.py
+$ python3 canny4.py
 ```
 
 ## FLIR Camera + Raspberry Pi Camera Alpha Blending
 ```shell  
-$ python blend.py
+$ python3 blend.py
 ```
 
 
@@ -67,13 +70,13 @@ $ python blend.py
 ## Required
 ### Install Python-tesseract
 ```shell  
-$ pip install pytesseract
+$ pip3 install pytesseract
 ```
 
 ### Use [pytesseract](https://pypi.python.org/pypi/pytesseract) to do OCR.
 ```shell  
 $ cd micro
-$ python ocr_preview.py 0
+$ python3 ocr_preview.py 0
 ```
 
 Note:

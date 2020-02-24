@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 #+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 #|R|a|s|p|b|e|r|r|y|P|i|.|c|o|m|.|t|w|
 #+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -11,24 +11,19 @@
 # Usage  : python flir_preview.py
 
 import cv2
+import time
+import imutils
 
-if cv2.__version__.startswith('2'):
-    PROP_FRAME_WIDTH = cv2.cv.CV_CAP_PROP_FRAME_WIDTH
-    PROP_FRAME_HEIGHT = cv2.cv.CV_CAP_PROP_FRAME_HEIGHT
-elif cv2.__version__.startswith('3'):
-    PROP_FRAME_WIDTH = cv2.CAP_PROP_FRAME_WIDTH
-    PROP_FRAME_HEIGHT = cv2.CAP_PROP_FRAME_HEIGHT
-
-#cap = cv2.VideoCapture(1)
-cap = cv2.VideoCapture(0)
-cap.set(PROP_FRAME_WIDTH, 80)
-cap.set(PROP_FRAME_HEIGHT, 60)
+cap = cv2.VideoCapture(1)
 
 while True:
     ret, frame = cap.read()
+    frame = imutils.resize(frame, 160)
     cv2.imshow("preview", frame)
     if cv2.waitKey(1) & 0xFF == ord("q"):
         break
+
+    time.sleep(0.01)
 
 cap.release()
 cv2.destroyAllWindows()
