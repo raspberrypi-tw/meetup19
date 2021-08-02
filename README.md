@@ -11,7 +11,7 @@ Our environment is Pi 4 + 2020-02-05-raspbian-buster-full.img.
 ```shell  
 # Install Kernel Source and Header
 $ sudo apt-get update
-$ sudo apt-get install bc libncurses5-dev flex bison
+$ sudo apt-get install bc libncurses5-dev flex bison libssl-dev
 $ sudo wget https://raw.githubusercontent.com/notro/rpi-source/master/rpi-source -O /usr/bin/rpi-source && sudo chmod +x /usr/bin/rpi-source && /usr/bin/rpi-source -q --tag-update
 $ rpi-source
 
